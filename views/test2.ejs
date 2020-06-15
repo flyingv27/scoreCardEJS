@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="flyingv27">
+    <meta name="description" content="">
+    <meta name="keywords" content="Golf, Score card">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
+    <title>ScoreMate</title>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css">
+    <link rel="stylesheet" href="assets/css/swiper.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/fonts.css">
+    <!--link rel="manifest" href="manifest.json"-->
+    
+</head>
+
+<body>
+    <!-- Swiper -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div id="HOLE-1" class="swiper-slide"></div>
+            <div id="HOLE-2" class="swiper-slide"></div>
+            <div id="HOLE-3" class="swiper-slide"></div>
+            <div id="HOLE-4" class="swiper-slide"></div>
+            <div id="HOLE-5" class="swiper-slide"></div>
+            <div id="HOLE-6" class="swiper-slide"></div>
+            <div id="HOLE-7" class="swiper-slide"></div>
+            <div id="HOLE-8" class="swiper-slide"></div>
+            <div id="HOLE-9" class="swiper-slide"></div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="assets/js/swiper.js"></script>
+    <script>
+        // $("#settings").load("./settings.html");
+        $("#HOLE-1").load("./views/hole1.html");
+        $("#HOLE-2").load("./views/hole2.html");
+        $("#HOLE-3").load("./views/hole3.html");
+        $("#HOLE-4").load("./views/hole4.html");
+        $("#HOLE-5").load("./views/hole5.html");
+        $("#HOLE-6").load("./views/hole6.html");
+        $("#HOLE-7").load("./views/hole7.html");
+        $("#HOLE-8").load("./views/hole8.html");
+        $("#HOLE-9").load("./views/hole9.html");
+
+
+        playersOn = [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]];
+        playersPutt = [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]];
+        
+        playerNumStroke = [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]];
+        playerNumPutt = [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]];
+        playerNumOB = [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]];
+        playerNumHazard = [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]];
+        playerNumPenalty = [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]];
+
+        let saveYN = "N";
+        console.log("1213123123");
+        console.log("<%=p1name%>");
+        // console.log($_POST['p1-name']);
+        // console.log($_POST['p2-name']);
+        // console.log($_POST['p3-name']);
+        // console.log($_POST['p4-name']);
+
+
+        function shotAdd(i, j, type) {
+            
+            var obj = $("#hole"+i+" [name=p"+j+"-num-on]");
+            playersOn[i-1][j-1] += 1;
+            obj[0].innerHTML = playersOn[i-1][j-1];
+            
+            if(type == 'stroke') {
+                var p_num_stroke = $("#hole"+i+" [name=p"+j+"-strk-badge]");
+                playerNumStroke[i-1][j-1] += 1;
+                p_num_stroke[0].innerHTML = playerNumStroke[i-1][j-1]; 
+            } else if(type == 'ob') {
+                var p_num_ob = $("#hole"+i+" [name=p"+j+"-ob-badge]");
+                playerNumOB[i-1][j-1] += 1;
+                p_num_ob[0].innerHTML = playerNumOB[i-1][j-1];
+            } else if(type == 'hzd') {
+                var p_num_hazard = $("#hole"+i+" [name=p"+j+"-hzd-badge]");
+                playerNumHazard[i-1][j-1] += 1;
+                p_num_hazard[0].innerHTML = playerNumHazard[i-1][j-1]; 
+            } else if(type == 'pnty') {
+                var p_num_pnty = $("#hole"+i+" [name=p"+j+"-pnty-badge]");
+                playerNumPenalty[i-1][j-1] += 1;
+                p_num_pnty[0].innerHTML = playerNumPenalty[i-1][j-1]; 
+            }
+            
+        }
+
+        function shotMinus(i, j, type) {
+            var obj = $("#hole"+i+" [name=p"+j+"-num-on]");
+            playersOn[i-1][j-1] -= 1;
+            obj[0].innerHTML = playersOn[i-1][j-1];
+            
+            if(type == 'stroke') {
+                var p_num_stroke = $("#hole"+i+" [name=p"+j+"-strk-badge]");
+                playerNumStroke[i-1][j-1] -= 1;
+                p_num_stroke[0].innerHTML = playerNumStroke[i-1][j-1]; 
+            } else if(type == 'ob') {
+                var p_num_ob = $("#hole"+i+" [name=p"+j+"-ob-badge]");
+                playerNumOB[i-1][j-1] -= 1;
+                p_num_ob[0].innerHTML = playerNumOB[i-1][j-1];
+            } else if(type == 'hzd') {
+                var p_num_hazard = $("#hole"+i+" [name=p"+j+"-hzd-badge]");
+                playerNumHazard[i-1][j-1] -= 1;
+                p_num_hazard[0].innerHTML = playerNumHazard[i-1][j-1]; 
+            } else if(type == 'pnty') {
+                var p_num_pnty = $("#hole"+i+" [name=p"+j+"-pnty-badge]");
+                playerNumPenalty[i-1][j-1] -= 1;
+                p_num_pnty[0].innerHTML = playerNumPenalty[i-1][j-1]; 
+            }
+            
+        }
+
+        function puttAdd(i,j) {
+            var obj = $("#hole"+i+" [name=p"+j+"-num-putt]");
+            playersPutt[i-1][j-1] += 1;
+            obj[0].innerHTML = playersPutt[i-1][j-1];
+            
+            var p_num_putt = $("#hole"+i+" [name=p"+j+"-putt-badge]");
+            playerNumPutt[i-1][j-1] += 1;
+            p_num_putt[0].innerHTML = playerNumPutt[i-1][j-1];
+            
+        }
+
+        function puttMinus(i,j) {
+            var obj = $("#hole"+i+" [name=p"+j+"-num-putt]");
+            playersPutt[i-1][j-1] -= 1;
+            obj[0].innerHTML = playersPutt[i-1][j-1];
+            
+            var p_num_putt = $("#hole"+i+" [name=p"+j+"-putt-badge]");
+            playerNumPutt[i-1][j-1] -= 1;
+            p_num_putt[0].innerHTML = playerNumPutt[i-1][j-1];
+        }
+
+        function save() {
+            localStorage.setItem("playersOn",JSON.stringify(playersOn));
+            localStorage.setItem("playersPutt",JSON.stringify(playersPutt));
+            localStorage.setItem("playerNumStroke",JSON.stringify(playerNumStroke));
+            localStorage.setItem("playerNumPutt",JSON.stringify(playerNumPutt));
+            localStorage.setItem("playerNumOB",JSON.stringify(playerNumOB));
+            localStorage.setItem("playerNumHazard",JSON.stringify(playerNumHazard));
+            localStorage.setItem("playerNumPenalty",JSON.stringify(playerNumPenalty));
+            console.log(localStorage.getItem("playersOn"));
+            console.log(localStorage.getItem("playerNumPutt"));
+            saveYN = "Y";
+            localStorage.setItem("saveYN", saveYN);
+            
+
+
+        }
+
+        //$(document).ready(function(){
+        $(window).load(function(){
+            var obj;
+            console.log(localStorage.getItem("saveYN"));
+            // for(i=1; i <= arrPlayersOn.length; i++) {
+            for(i=1; i <= 9; i++) {
+                for(j=1; j <= 4; j++){
+                    obj = $("#hole"+i+" [name=p"+j+"-name]");
+                    if (j==1) {
+                        obj[0].innerHTML = "<%=p1name%>";
+                    } else if (j==2) {
+                        obj[0].innerHTML = "<%=p2name%>";
+                    } else if (j==3) {
+                        obj[0].innerHTML = "<%=p3name%>";
+                    } else if (j==4) {
+                        obj[0].innerHTML = "<%=p4name%>";
+                    } 
+                }
+            }
+
+            if(localStorage.getItem("saveYN") == "Y") {
+                arrPlayersOn = JSON.parse(localStorage.getItem("playersOn"));
+                arrPlayersPutt = JSON.parse(localStorage.getItem("playersPutt"));
+                arrPlayerNumStroke = JSON.parse(localStorage.getItem("playerNumStroke"));
+                arrPlayerNumPutt = JSON.parse(localStorage.getItem("playerNumPutt"));
+                arrPlayerNumOB = JSON.parse(localStorage.getItem("playerNumOB"));
+                arrPlayerNumHazard = JSON.parse(localStorage.getItem("playerNumHazard"));
+                arrPlayerNumPenalty = JSON.parse(localStorage.getItem("playerNumPenalty"));
+
+                playersOn = arrPlayersOn;
+                playersPutt = arrPlayersPutt;
+                playerNumStroke = arrPlayerNumStroke;
+                playerNumPutt = arrPlayerNumPutt;
+                playerNumOB = arrPlayerNumOB;
+                playerNumHazard = arrPlayerNumHazard;
+                playerNumPenalty = arrPlayerNumPenalty;
+
+                // for(i=1; i <= arrPlayersOn.length; i++) {
+                for(i=1; i <= 9; i++) {
+                    for(j=1; j <= 4; j++){
+                        obj = $("#hole"+i+" [name=p"+j+"-name]");
+                        obj[0].innerHTML = "<%=p1name%>";
+                        console.log("<%=p1name%>");
+                        obj = $("#hole"+i+" [name=p"+j+"-num-on]");
+                        console.log(j);
+                        console.log(obj[0]);
+                        obj[0].innerHTML = arrPlayersOn[i-1][j-1];
+
+                        obj = $("#hole"+i+" [name=p"+j+"-num-putt]");
+                        obj[0].innerHTML = arrPlayersPutt[i-1][j-1];
+                        obj = $("#hole"+i+" [name=p"+j+"-strk-badge]");
+                        obj[0].innerHTML = arrPlayerNumStroke[i-1][j-1];
+                        obj = $("#hole"+i+" [name=p"+j+"-putt-badge]");
+                        obj[0].innerHTML = arrPlayerNumPutt[i-1][j-1];
+                        obj = $("#hole"+i+" [name=p"+j+"-ob-badge]");
+                        obj[0].innerHTML = arrPlayerNumOB[i-1][j-1];
+                        obj = $("#hole"+i+" [name=p"+j+"-hzd-badge]");
+                        obj[0].innerHTML = arrPlayerNumHazard[i-1][j-1];
+                        obj = $("#hole"+i+" [name=p"+j+"-pnty-badge]");
+                        obj[0].innerHTML = arrPlayerNumPenalty[i-1][j-1];
+                    }
+                }
+
+            } else {
+                console.log("not saved...");
+            }
+            
+            // console.log(arrPlayersOn.length);
+            // console.log(arrPlayersOn[0][0]);
+            // console.log(arrPlayersOn[0][1]);
+            // console.log(arrPlayersOn[0][2]);
+            // console.log(arrPlayersOn[0][3]);
+            //for(i; i<arrPlayersOn.length)
+            
+        });
+    </script>
+</body>
+
+</html>
